@@ -335,6 +335,186 @@ CREATE TABLE shipments (
 );
 
 
+-- ============================================
+-- Table: returns
+-- Description: Stores returned products
+-- ============================================
+
+CREATE TABLE returns (
+
+    return_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    order_item_id INT NOT NULL,
+
+    return_date DATE NOT NULL,
+
+    return_reason VARCHAR(200),
+
+    refund_amount DECIMAL(10,2),
+
+    return_status ENUM(
+        'Requested',
+        'Approved',
+        'Rejected',
+        'Refunded'
+    ) DEFAULT 'Requested',
+
+    CONSTRAINT fk_return_order_item
+        FOREIGN KEY(order_item_id)
+        REFERENCES order_items(order_item_id)
+
+);
+
+-- ============================================
+-- Table: reviews
+-- ============================================
+
+CREATE TABLE reviews (
+
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+
+    product_id INT NOT NULL,
+
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+
+    review_text TEXT,
+
+    review_date DATE,
+
+    CONSTRAINT fk_review_customer
+        FOREIGN KEY(customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_review_product
+        FOREIGN KEY(product_id)
+        REFERENCES products(product_id)
+
+);
+
+-- ============================================
+-- Table: campaigns
+-- ============================================
+
+CREATE TABLE campaigns (
+
+    campaign_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    campaign_name VARCHAR(100) NOT NULL,
+
+    platform VARCHAR(50),
+
+    budget DECIMAL(10,2),
+
+    revenue_generated DECIMAL(10,2),
+
+    start_date DATE,
+
+    end_date DATE
+
+);
+
+-- ============================================
+-- Table: employees
+-- ============================================
+
+CREATE TABLE employees (
+
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    warehouse_id INT,
+
+    first_name VARCHAR(50),
+
+    last_name VARCHAR(50),
+
+    department VARCHAR(50),
+
+    designation VARCHAR(50),
+
+    salary DECIMAL(10,2),
+
+    hire_date DATE,
+
+    CONSTRAINT fk_employee_warehouse
+        FOREIGN KEY(warehouse_id)
+        REFERENCES warehouses(warehouse_id)
+
+);
+
+-- ============================================
+-- Table: customer_support_tickets
+-- ============================================
+
+CREATE TABLE customer_support_tickets (
+
+    ticket_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT NOT NULL,
+
+    order_id INT,
+
+    issue_type VARCHAR(100),
+
+    priority ENUM(
+        'Low',
+        'Medium',
+        'High',
+        'Critical'
+    ),
+
+    status ENUM(
+        'Open',
+        'In Progress',
+        'Resolved',
+        'Closed'
+    ) DEFAULT 'Open',
+
+    created_date DATE,
+
+    resolved_date DATE,
+
+    CONSTRAINT fk_ticket_customer
+        FOREIGN KEY(customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_ticket_order
+        FOREIGN KEY(order_id)
+        REFERENCES orders(order_id)
+
+);
+
+-- ============================================
+-- Table: product_views
+-- ============================================
+
+CREATE TABLE product_views (
+
+    view_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    customer_id INT,
+
+    product_id INT,
+
+    view_date DATETIME,
+
+    device_type ENUM(
+        'Mobile',
+        'Desktop',
+        'Tablet'
+    ),
+
+    CONSTRAINT fk_view_customer
+        FOREIGN KEY(customer_id)
+        REFERENCES customers(customer_id),
+
+    CONSTRAINT fk_view_product
+        FOREIGN KEY(product_id)
+        REFERENCES products(product_id)
+
+);
+
 
 
     
