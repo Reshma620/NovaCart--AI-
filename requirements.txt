@@ -1,1 +1,7 @@
-
+pandas
+numpy
+faker
+openpyxl
+mysql-connector-python
+matplotlib
+plotly
