@@ -78,3 +78,75 @@ The platform should help NovaCart:
 # Document Status
 
 In Progress
+
+
+# 6. Project Scope
+
+## In Scope
+
+- Customer Analytics
+- Sales Analytics
+- Inventory Analytics
+- Returns Analysis
+- Marketing Analytics
+- AI Business Insights
+- Interactive Dashboards
+- SQL Reporting
+
+## Out of Scope
+
+- Online Payment Gateway
+- User Authentication
+- Live Order Processing
+- Real-time Customer Transactions
+
+
+# 7. Functional Requirements
+
+The system shall:
+
+- Store customer information
+- Manage product catalog
+- Track orders
+- Record payments
+- Monitor shipments
+- Process returns
+- Store customer reviews
+- Generate business reports
+- Support dashboard visualization
+- Generate AI-based business insights
+
+# 8. Non-Functional Requirements
+
+- High Performance
+- Secure Database
+- Scalable Architecture
+- Maintainable Code
+- Modular Design
+- Accurate Reporting
+
+# 9. Key Performance Indicators (KPIs)
+
+- Revenue
+- Profit
+- Average Order Value
+- Customer Lifetime Value
+- Repeat Purchase Rate
+- Return Rate
+- Inventory Turnover
+- Customer Satisfaction
+- Delivery Time
+
+# 10. Technology Stack
+
+- MySQL
+- SQL
+- Python
+- Pandas
+- NumPy
+- Faker
+- Power BI
+- Tableau
+- Git
+- GitHub
+- VS Code
